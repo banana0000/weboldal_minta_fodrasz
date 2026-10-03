@@ -1,38 +1,42 @@
-/* ===== Egyedi kiegészítések a Bootstrap 5 mellé ===== */
-/* Paletta: drapp, fekete, zöld. Lekerekítés sehol. */
+/* ===== Custom additions on top of Bootstrap 5 ===== */
+/* Palette: beige, black, green. Slight rounding. */
 :root {
-  --green: #d6246e;
-  --green-light: #ff9cc6;
-  --green-dark: #a3154f;
-  --black: #111111;
-  --drapp: #ffc9df;
-  --drapp-dark: #ff5c9d;
-  --drapp-soft: #e4e4e7;
-  --paper: #f3f3f5;
-  --deep: #111111;
-  --grad: #d6246e;
-  --grad-soft: #e4e4e7;
+  --green: #c44f7e;
+  --green-light: #f6bfd3;
+  --green-dark: #8f2d57;
+  --black: #2e1a28;
+  --drapp: #f9dce6;
+  --drapp-dark: #f2a1bd;
+  --drapp-soft: #f6e8e8;
+  --paper: #fcf6f2;
+  --deep: #2e1a28;
+  --grad: linear-gradient(135deg, #d4628d 0%, #b0416d 100%);
+  --grad-soft: #f6e8e8;
 
-  /* Bootstrap változók felülírása */
+  /* Bootstrap variable overrides */
   --bs-body-font-family: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --bs-body-bg: #f3f3f5;
-  --bs-body-color: #111111;
+  --bs-body-bg: #fcf6f2;
+  --bs-body-color: #2e1a28;
   --bs-body-line-height: 1.7;
-  --bs-primary: #d6246e;
-  --bs-primary-rgb: 214, 36, 110;
-  --bs-link-color: #d6246e;
-  --bs-link-hover-color: #111111;
-  --bs-border-color: #ffc9df;
-  --bs-secondary-color: #5c4652;
-  --bs-border-radius: 0;
-  --bs-border-radius-sm: 0;
-  --bs-border-radius-lg: 0;
-  --bs-border-radius-xl: 0;
-  --bs-border-radius-xxl: 0;
-  --bs-border-radius-pill: 0;
+  --bs-primary: #c44f7e;
+  --bs-primary-rgb: 196, 79, 126;
+  --bs-link-color: #c44f7e;
+  --bs-link-hover-color: #2e1a28;
+  --bs-border-color: #f9dce6;
+  --bs-secondary-color: #6b5160;
+  --r: .75rem;
+  --bs-border-radius: .5rem;
+  --bs-border-radius-sm: .4rem;
+  --bs-border-radius-lg: .75rem;
+  --bs-border-radius-xl: 1rem;
+  --bs-border-radius-xxl: 1.25rem;
+  --bs-border-radius-pill: .75rem;
 }
-/* Nincs lekerekítés sehol */
-*, *::before, *::after { border-radius: 0 !important; }
+/* Slight rounding */
+.btn, .form-control, .dropdown-menu, .dropdown-item, .navbar-toggler, .price-pills .nav-link, .badge { border-radius: .5rem !important; }
+.tile, .person, .promo, .price-card, .map-card, .art, .art img, .tile img, .modal-content { border-radius: var(--r) !important; }
+.avatar, .social a { border-radius: .6rem !important; }
+.form-check-input:not([type=radio]) { border-radius: .3rem !important; }
 
 html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 body { -webkit-font-smoothing: antialiased; }
@@ -43,16 +47,16 @@ h1, h2, h3, h4, .brand { font-family: "Fraunces", Georgia, serif; font-weight: 5
 .section-head { max-width: 40rem; margin: 0 auto 3rem; text-align: center; }
 .section-head h2 { font-size: clamp(2rem, 4.2vw, 2.9rem); }
 
-/* Gombok */
+/* Buttons */
 .btn { font-weight: 700; padding: .7rem 1.6rem; }
 .btn-sm { padding: .45rem 1.1rem; }
-.btn-gradient { color: #fff; border: 0; background: var(--green); transition: transform .2s, background-color .2s; }
-.btn-gradient:hover, .btn-gradient:focus { color: #fff; background: var(--black); transform: translateY(-2px); }
-.btn-outline-violet { color: var(--black); border: 0; background: #e4e4e7; }
+.btn-gradient { color: #fff; border: 0; background: var(--grad); transition: transform .2s, background-color .2s; }
+.btn-gradient:hover, .btn-gradient:focus { color: #fff; background: var(--green-dark); transform: translateY(-2px); }
+.btn-outline-violet { color: var(--black); border: 0; background: var(--drapp-soft); }
 .btn-outline-violet:hover { color: #fff; background: var(--black); }
 
 /* Navbar */
-.navbar { background: rgba(17,17,17,.6) !important; padding-block: .6rem; }
+.navbar { background: rgba(0,0,0,.55) !important; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); padding-block: 1.2rem; }
 .navbar-brand { font-size: 1.5rem; font-weight: 600; }
 .navbar .nav-link { font-weight: 600; color: var(--bs-body-color); }
 .navbar .nav-link:hover, .navbar .dropdown-item:hover { color: var(--green); }
@@ -62,9 +66,9 @@ h1, h2, h3, h4, .brand { font-family: "Fraunces", Georgia, serif; font-weight: 5
 @media (min-width: 992px) { .navbar .dropdown:hover > .dropdown-menu { display: block; } }
 
 /* Hero */
-.hero { color: #fff; padding-block: clamp(3.5rem, 8vw, 6.5rem); background: var(--black); }
+.hero { position: relative; isolation: isolate; overflow: hidden; color: #fff; padding-block: clamp(3.5rem, 8vw, 6.5rem); background: linear-gradient(135deg, #2e1a28 0%, #5a2a47 55%, #8f2d57 100%); }
 .hero h1 { color: var(--drapp); font-size: clamp(2.6rem, 6vw, 4.6rem); letter-spacing: -.02em; }
-.hero .lead { color: #f1ead8; max-width: 33rem; }
+.hero .lead { color: #f6e3ea; max-width: 33rem; }
 .hero .btn-light { background: var(--drapp); border: 0; color: var(--black); }
 .hero .btn-light:hover { background: #fff; }
 .btn-ghost { color: var(--black); border: 0; background: var(--green-light); }
@@ -72,13 +76,13 @@ h1, h2, h3, h4, .brand { font-family: "Fraunces", Georgia, serif; font-weight: 5
 .promo { border: 0; background: #fff; box-shadow: 10px 10px 0 var(--drapp-dark); }
 .promo .badge { background: var(--black); color: var(--drapp); font-weight: 800; letter-spacing: .04em; padding: .5rem .9rem; }
 
-/* Csempék */
+/* Tiles */
 .tile { position: relative; overflow: hidden; isolation: isolate; display: flex; flex-direction: column; justify-content: flex-end; min-height: 15rem; padding: 1.3rem; border: 0; color: #fff; text-decoration: none; transition: transform .5s cubic-bezier(.2,.7,.2,1), opacity .7s ease; }
 .tile:hover { color: #fff; transform: translateY(-6px); }
 .tile img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
-.tile::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(17,17,17,.82) 0%, rgba(17,17,17,.3) 55%, rgba(17,17,17,.1) 100%); transition: background .5s; }
+.tile::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(46,26,40,.82) 0%, rgba(46,26,40,.3) 55%, rgba(46,26,40,.1) 100%); transition: background .5s; }
 .tile:hover img { transform: scale(1.07); }
-.tile:hover::before { background: linear-gradient(to top, rgba(214,36,110,.9) 0%, rgba(214,36,110,.4) 60%, rgba(17,17,17,.1) 100%); }
+.tile:hover::before { background: linear-gradient(to top, rgba(196,79,126,.9) 0%, rgba(196,79,126,.4) 60%, rgba(46,26,40,.1) 100%); }
 .tile svg {  position: absolute; top: 1.3rem; left: 1.3rem; width: 2.6rem; height: 2.6rem; stroke: #fff; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .tile h3 { color: #fff; font-size: 1.2rem; margin: 0; }
 .tile-1 { background: var(--green); }
@@ -87,25 +91,25 @@ h1, h2, h3, h4, .brand { font-family: "Fraunces", Georgia, serif; font-weight: 5
 .tile-4 { background: var(--green); }
 .tile-5 { background: var(--drapp-dark); }
 
-/* Munkatársak */
+/* Team */
 .person { padding: 1rem; background: #fff; border: 0; }
-.avatar { flex: none; width: 4.5rem; height: 4.5rem; display: grid; place-items: center; background: var(--green); color: #fff; font: 500 1.6rem "Fraunces", serif; }
+.avatar { flex: none; width: 4.5rem; height: 4.5rem; display: grid; place-items: center; background: var(--grad); color: #fff; font: 500 1.6rem "Fraunces", serif; }
 
-/* Részletek */
+/* Details */
 .detail + .detail { border-top: 0; }
-.art { min-height: 15rem; overflow: hidden; background: var(--drapp-soft); }
-.art img { display: block; width: 100%; height: 100%; min-height: 15rem; object-fit: cover; }
+.art { width: 100%; max-width: 24rem; aspect-ratio: 4 / 3; margin-inline: auto; overflow: hidden; background: var(--drapp-soft); }
+.art img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-/* Árlista */
-.price-pills .nav-link { color: var(--black); font-weight: 700; border: 0; background: #e4e4e7; padding: .55rem 1.2rem; }
-.price-pills .nav-link:hover { background: #d1d1d6; color: var(--black); }
+/* Price list */
+.price-pills .nav-link { color: var(--black); font-weight: 700; border: 0; background: var(--drapp-soft); padding: .55rem 1.2rem; }
+.price-pills .nav-link:hover { background: #efd3dc; color: var(--black); }
 .price-pills .nav-link.active, .price-pills .nav-link.active:hover { color: #fff; background: var(--green); }
 .price-card { max-width: 46rem; margin-inline: auto; background: #fff; border: 0; box-shadow: 10px 10px 0 var(--drapp); }
 .price-card li { display: flex; align-items: baseline; gap: .6rem; padding: .75rem 0; }
 .price-card .dots { flex: 1; min-width: 1rem; border-bottom: 2px dotted var(--drapp-dark); transform: translateY(-5px); }
 .price-card .price { white-space: nowrap; font-weight: 800; color: var(--green); }
 
-/* Űrlapok */
+/* Forms */
 .form-control { background-color: var(--drapp-soft); border: 0; }
 .form-control:focus { background-color: #fff; box-shadow: inset 0 -3px 0 var(--green); }
 .form-check-input:checked { background-color: var(--green); border-color: var(--green); }
@@ -114,12 +118,12 @@ h1, h2, h3, h4, .brand { font-family: "Fraunces", Georgia, serif; font-weight: 5
 .social a { width: 2.7rem; height: 2.7rem; display: inline-grid; place-items: center; background: var(--black); color: var(--drapp); text-decoration: none; font-weight: 800; font-size: .8rem; }
 .social a:hover { background: var(--green); color: #fff; }
 
-/* Google térkép */
+/* Google map */
 .map-card { margin: 0; overflow: hidden; background: var(--drapp-soft); }
 .map-card iframe { display: block; width: 100%; height: 18rem; border: 0; }
 .map-card figcaption { padding: .7rem 1rem; font-size: .85rem; font-weight: 700; }
 .map-card figcaption a { color: var(--green); }
-/* Bejelentkezési ablak */
+/* Modal window */
 .modal-content.auth { border: 0; overflow: hidden; background: var(--paper); box-shadow: 12px 12px 0 var(--green); }
 .modal-content.auth::before { content: ""; display: block; height: .5rem; background: var(--green); }
 .auth .nav-underline { --bs-nav-underline-link-active-color: var(--deep); --bs-nav-underline-gap: 1.6rem; border-bottom: 0; }
@@ -136,10 +140,10 @@ h1, h2, h3, h4, .brand { font-family: "Fraunces", Georgia, serif; font-weight: 5
 footer { background: var(--black); color: var(--drapp); font-size: .9rem; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .tile { transition: none; } }
 
-/* Finom átmenetek */
+/* Subtle transitions */
 a, .btn, .nav-link, .dropdown-item, .form-control { transition: color .25s ease, background-color .25s ease, box-shadow .25s ease, transform .25s ease; }
 .navbar { transition: box-shadow .3s ease; }
-.navbar.scrolled { box-shadow: 0 8px 24px -16px rgba(17,17,17,.35); }
+.navbar.scrolled { box-shadow: 0 8px 24px -16px rgba(46,26,40,.35); }
 .hero h1, .hero .lead, .hero .btn, .promo { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
 .hero .lead { animation-delay: .12s; }
 .hero .btn { animation-delay: .24s; }
@@ -151,32 +155,32 @@ a, .btn, .nav-link, .dropdown-item, .form-control { transition: color .25s ease,
 .tab-pane.fade { transition: opacity .35s ease; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero h1, .hero .lead, .hero .btn, .promo, .tile img { animation: none; transition: none; } }
 
-/* Kapcsolat + lábléc: egybefüggő fekete blokk */
-#kapcsolat { background: var(--black); color: #f3f3f5; padding-bottom: 2rem; }
-#kapcsolat h2, #kapcsolat h3 { color: #fff; }
-#kapcsolat .text-body-secondary { color: #b9b9c0 !important; }
-#kapcsolat a { color: var(--drapp-dark); }
-#kapcsolat a:hover { color: #fff; }
-#kapcsolat .form-control { background-color: #24242a; color: #fff; }
-#kapcsolat .form-control:focus { background-color: #2c2c33; color: #fff; box-shadow: inset 0 -3px 0 var(--drapp-dark); }
-#kapcsolat .form-floating > label { color: #9a9aa3; }
-#kapcsolat .form-check-input { background-color: #24242a; }
-#kapcsolat .form-check-input:checked { background-color: var(--green); border-color: var(--green); }
-#kapcsolat .form-check-label { color: #d6d6dc; }
-#kapcsolat .invalid-feedback { color: var(--drapp-dark); }
-#kapcsolat .btn-gradient:hover, #kapcsolat .btn-gradient:focus { background: #fff; color: var(--black); }
-#kapcsolat .text-success { color: var(--green-light) !important; }
-#kapcsolat .map-card { background: #24242a; }
-#kapcsolat .map-card figcaption a { color: var(--drapp-dark); }
-#kapcsolat .social a { background: var(--green); color: #fff; }
-#kapcsolat .social a:hover { background: #fff; color: var(--black); }
+/* Contact + footer: one continuous black block */
+#contact { background: var(--black); color: #fcf6f2; padding-bottom: 2rem; }
+#contact h2, #contact h3 { color: #fff; }
+#contact .text-body-secondary { color: #d3bcc8 !important; }
+#contact a { color: var(--drapp-dark); }
+#contact a:hover { color: #fff; }
+#contact .form-control { background-color: #40283a; color: #fff; }
+#contact .form-control:focus { background-color: #4b3043; color: #fff; box-shadow: inset 0 -3px 0 var(--drapp-dark); }
+#contact .form-floating > label { color: #bba1b0; }
+#contact .form-check-input { background-color: #40283a; }
+#contact .form-check-input:checked { background-color: var(--green); border-color: var(--green); }
+#contact .form-check-label { color: #ecdde4; }
+#contact .invalid-feedback { color: var(--drapp-dark); }
+#contact .btn-gradient:hover, #contact .btn-gradient:focus { background: #fff; color: var(--black); }
+#contact .text-success { color: var(--green-light) !important; }
+#contact .map-card { background: #40283a; }
+#contact .map-card figcaption a { color: var(--drapp-dark); }
+#contact .social a { background: var(--green); color: #fff; }
+#contact .social a:hover { background: #fff; color: var(--black); }
 footer .container { padding-top: .25rem; }
 
-/* Rózsaszín navigációs sáv */
+/* Pink navigation bar */
 .navbar .brand, .navbar .brand .text-gradient { color: #fff; }
 .navbar .nav-link { color: #fff; }
 .navbar .nav-link:hover, .navbar .nav-link:focus, .navbar .nav-link.show { color: var(--drapp-dark); }
-.navbar .btn-gradient { background: var(--green); color: #fff; }
+.navbar .btn-gradient { background: var(--grad); color: #fff; }
 .navbar .btn-gradient:hover, .navbar .btn-gradient:focus { background: #fff; color: var(--black); }
 .navbar .btn-outline-violet { background: #fff; color: var(--black); }
 .navbar .btn-outline-violet:hover { background: var(--black); color: #fff; }
